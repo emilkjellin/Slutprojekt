@@ -13,6 +13,10 @@ Fighter2.Height = 320;
 Fighter2.Width = 600;
 
 int game = 0;
+int fighter1_hp = 100;
+int fighter2_hp = 100;
+int fighter1_dm = 10;
+int fighter2_dm = 10;
 string[] characters = {"NormalTheo", "AikTheo", "TyskTheo", "EldenringTheo"};
 characters[0] = "NormalTheo";
 characters[1] = "AikTheo";
@@ -22,7 +26,12 @@ bool gubbe1 = false;
 while (!Raylib.WindowShouldClose())
 {
 
+static void Damage()
+{
 
+
+
+}
 
 Raylib.BeginDrawing();
     if (game == 2)
@@ -30,20 +39,32 @@ Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.White);
         Raylib.DrawRectangle(700, 800, 300, 100, Color.DarkBlue);
         Raylib.DrawText("Fight", 750,800,100,Color.White);
-        int fighter1_hp = 100;
-        int fighter2_hp = 100;
-         if (Raylib.GetMouseX() > 200 && Raylib.GetMouseX() < 800 && Raylib.GetMouseY() > 100 && Raylib.GetMouseY() < 430)
+        /*int hp2 = ;*/
+        int Fight = 0;
+        int fighterhp2 = fighter2_hp; 
+       
+         Raylib.DrawText($"Fighter2hp:{fighterhp2}", 720,100,100,Color.White);
+         Raylib.DrawRectangle(700, 100, 300, 200, Color.DarkBlue);
+         if (Raylib.GetMouseX() > 700 && Raylib.GetMouseX() < 1000 && Raylib.GetMouseY() > 750 && Raylib.GetMouseY() < 850)
         {
-            if (Raylib.IsMouseButtonDown(MouseButton.Left))
+            if (Raylib.IsMouseButtonUp(MouseButton.Left))
             {
-            
+            Fight = 1;
             }
    
         }
-    
+        if (Fight == 1)
+        {
+             Raylib.DrawRectangle(700, 600, 300, 200, Color.DarkBlue);
+             Raylib.DrawText("move_1(A)", 720,620,50,Color.White);
+             if (Raylib.IsKeyDown(KeyboardKey.One))
+        {
+           
+        }
+        }
         if (gubbe1 == true)
         {
-             Raylib.DrawTexture(Fighter1, 300, 400, Color.White);
+             Raylib.DrawTexture(Fighter1, 300, 200, Color.White);
         }
     }
     if (game == 1)
