@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj": {}
+    "c:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "c:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectUniqueName": "c:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj",
         "projectName": "ConsoleApp1",
-        "projectPath": "C:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectPath": "c:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj",
         "packagesPath": "C:\\Users\\emil.kjellin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\obj\\",
+        "outputPath": "c:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

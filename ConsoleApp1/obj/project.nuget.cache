@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J01AxK4HZ+Edrnir+Y8gzJ4eDFDdV3ZWM8UOlIvxh0qy5U047PxHEWHWrbgmjUi1J6V+VJItVAL1NZLHt2xQmQ==",
+  "dgSpecHash": "Jk2CET6ZtlqEgLE6i/6dIYjJh4w0H+ZxkP05n9zF81+yAGB8Y7XqmxWIlwYDFT8vG1vnm7wXkzUyNqXHRPOZcQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "c:\\Users\\emil.kjellin\\Documents\\Programmering 1\\Slutprojekt\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\emil.kjellin\\.nuget\\packages\\raylib-cs\\6.0.0\\raylib-cs.6.0.0.nupkg.sha512",
     "C:\\Users\\emil.kjellin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
