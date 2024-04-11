@@ -12,9 +12,12 @@ Fighter1.Width = 600;
 Texture2D Fighter2 = Raylib.LoadTexture(@"C:\Users\emil.kjellin\Documents\Programmering 1\Slutprojekt\Bilder\Theo AIK KUNGEN (1).png");
 Fighter2.Height = 320;
 Fighter2.Width = 600;
-Texture2D backgroundaik = Raylib.LoadTexture(@"C:\Users\emil.kjellin\Documents\Programmering 1\Slutprojekt\Bilder\Aikbakgrund.png");
+Texture2D backgroundaik = Raylib.LoadTexture(@"C:\Users\emil.kjellin\Documents\Programmering 1\Slutprojekt\Bilder\hockeyarena.png");
 backgroundaik.Height = 1080;
 backgroundaik.Width = 1920;
+Texture2D Donaldopp = Raylib.LoadTexture(@"C:\Users\emil.kjellin\Documents\Programmering 1\Slutprojekt\Bilder\maxdonald.png");
+Donaldopp.Height = 300;
+Donaldopp.Width = 600;
 int game = 0;
 int fighter1_hp = 500;
 int fighter2_hp = 500;
@@ -26,6 +29,8 @@ int Fightermovement = 75;
 //var timer = new System.Timers.Timer(1000);
 double timer = 0;
 int mvmttimer = 0;
+int turn = 0;
+bool attacktimer = false;
 string[] characters = {"NormalTheo", "AikTheo", "TyskTheo", "EldenringTheo"};
 characters[0] = "NormalTheo";
 characters[1] = "AikTheo";
@@ -64,6 +69,54 @@ while (!Raylib.WindowShouldClose())
     }
 
 Raylib.BeginDrawing();
+   if (game == 0)
+{
+    Raylib.ClearBackground(Color.Black);
+    Raylib.DrawText("Start" , 900, 470, 50, Color.White);
+
+    if (Raylib.GetMouseX() > 840 && Raylib.GetMouseX() < 1040 && Raylib.GetMouseY() > 450 && Raylib.GetMouseY() < 510)
+    {
+        if (Raylib.IsMouseButtonDown(MouseButton.Left))
+        {
+            game = 1;
+           
+        }
+   
+    }
+}    
+   if (game == 1)
+    {
+     Raylib.ClearBackground(Color.SkyBlue);
+    Raylib.DrawTexture(Fighter1, 200, 100, Color.White);
+    Raylib.DrawTexture(Fighter2, 1100, 90, Color.White);
+    Raylib.DrawText("NormieTheo", 200,400,100,Color.White);
+    Raylib.DrawText("Aik Theo",1180,400,100,Color.White);
+
+     if (Raylib.GetMouseX() > 200 && Raylib.GetMouseX() < 800 && Raylib.GetMouseY() > 100 && Raylib.GetMouseY() < 430)
+    {
+        if (Raylib.IsMouseButtonDown(MouseButton.Left))
+        {
+            game = 2;
+           gubbe1 = true; 
+           playername = "NormieTheo";
+        }
+   
+    }
+    if (Raylib.GetMouseX() > 1100 && Raylib.GetMouseX() < 1500 && Raylib.GetMouseY() > 90 && Raylib.GetMouseY() < 330)
+    {
+        if (Raylib.IsMouseButtonDown(MouseButton.Left))
+        {
+            game = 2;
+           gubbe2 = true; 
+           playername = "AIKTHEO";
+        }
+   
+    }
+    }
+   
+   
+   
+   
     if (game == 2)
     {
         //timer.Start();
@@ -71,12 +124,13 @@ Raylib.BeginDrawing();
         {
             timer += 1;
         }
-        int turn = 0;
+       
         int Fight = 0;
-        int fighterhp2 = fighter2_hp; 
+        int fighterhp2 = fighter2_hp;
+        Raylib.DrawTexture(Donaldopp, 900, 100, Color.White); 
         Raylib.DrawRectangle(750, 800, 300, 100, Color.DarkBlue);
         Raylib.ClearBackground(Color.White);
-        Raylib.DrawTexture(backgroundaik, 0, 0, Color.White);
+        //Raylib.DrawTexture(backgroundaik, 0, 0, Color.Black);
         Raylib.DrawText($"Time:{((timer/100))}",820,100,100,Color.Black);
         Raylib.DrawText("Fight", 775,800,100,Color.White);
         
@@ -107,7 +161,14 @@ Raylib.BeginDrawing();
             }
             }
         }
-        
+            if (attacktimer == true)
+            {            
+                playermovement();
+            }
+            if (turn == 1)
+            {
+                attacktimer = false;
+            }
         if (Fight == 1)
         {
              Raylib.DrawRectangle(700, 600, 500, 400, Color.DarkBlue);
@@ -117,7 +178,7 @@ Raylib.BeginDrawing();
              {
                 Damage_Op();
                attackcap = 1;
-                   
+                attacktimer = true;
              }
            if (movement1 == 1)
            {
@@ -151,7 +212,7 @@ Raylib.BeginDrawing();
     if (timer > 500){
        if ( game == 2)
        {
-    
+            turn = 1;
         int moveop = random.Next(1,3);
         if (attackcap1 == 0)
         {
@@ -197,53 +258,13 @@ Raylib.BeginDrawing();
         timer = 0;
         attackcap = 0;
         mvmttimer = 0;
+        attacktimer = false;
+        turn = 0;
     }
     }
-    if (game == 1)
-    {
-     Raylib.ClearBackground(Color.SkyBlue);
-    Raylib.DrawTexture(Fighter1, 200, 100, Color.White);
-    Raylib.DrawTexture(Fighter2, 1100, 90, Color.White);
-    Raylib.DrawText("NormieTheo", 200,400,100,Color.White);
-    Raylib.DrawText("Aik Theo",1180,400,100,Color.White);
+    
 
-     if (Raylib.GetMouseX() > 200 && Raylib.GetMouseX() < 800 && Raylib.GetMouseY() > 100 && Raylib.GetMouseY() < 430)
-    {
-        if (Raylib.IsMouseButtonDown(MouseButton.Left))
-        {
-            game = 2;
-           gubbe1 = true; 
-           playername = "NormieTheo";
-        }
-   
-    }
-    if (Raylib.GetMouseX() > 1100 && Raylib.GetMouseX() < 1500 && Raylib.GetMouseY() > 90 && Raylib.GetMouseY() < 330)
-    {
-        if (Raylib.IsMouseButtonDown(MouseButton.Left))
-        {
-            game = 2;
-           gubbe2 = true; 
-           playername = "AIKTHEO";
-        }
-   
-    }
-    }
-
-if (game == 0)
-{
-    Raylib.ClearBackground(Color.Black);
-    Raylib.DrawText("Start" , 900, 470, 50, Color.White);
-
-    if (Raylib.GetMouseX() > 840 && Raylib.GetMouseX() < 1040 && Raylib.GetMouseY() > 450 && Raylib.GetMouseY() < 510)
-    {
-        if (Raylib.IsMouseButtonDown(MouseButton.Left))
-        {
-            game = 1;
-           
-        }
-   
-    }
-}    
+ 
 
     if (game == 3)
     {
