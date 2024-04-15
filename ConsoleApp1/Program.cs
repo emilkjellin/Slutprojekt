@@ -21,7 +21,8 @@ Donaldopp.Width = 600;
 int game = 0;
 int fighter1_hp = 500;
 int fighter2_hp = 500;
-int fighter1_dm = 100;
+int fighter1_dmg = 100;
+int fighter1_dmgz = 200;
 int fighter2_dm = 100;
 int Fightermovement = 75;
  int attackcap = 0;
@@ -44,7 +45,12 @@ while (!Raylib.WindowShouldClose())
 
     void Damage_Op()
     {
-    fighter2_hp -= fighter1_dm;
+    fighter2_hp -= fighter1_dmg;
+    movement1 = 1;
+    }   
+    void Damage_Opz()
+    {
+    fighter2_hp -= fighter1_dmgz;
     movement1 = 1;
     }   
     void Damage_player()
@@ -89,7 +95,7 @@ Raylib.BeginDrawing();
     Raylib.DrawTexture(Fighter2, 1100, 90, Color.White);
     Raylib.DrawText("NormieTheo", 200,400,100,Color.White);
     Raylib.DrawText("Aik Theo",1180,400,100,Color.White);
-
+    Array.Clear(characters,0,characters.Length);
      if (Raylib.GetMouseX() > 200 && Raylib.GetMouseX() < 800 && Raylib.GetMouseY() > 100 && Raylib.GetMouseY() < 430)
     {
         if (Raylib.IsMouseButtonDown(MouseButton.Left))
@@ -127,10 +133,11 @@ Raylib.BeginDrawing();
         int Fight = 0;
         int fighterhp2 = fighter2_hp;
         Raylib.DrawTexture(Donaldopp, 900, 100, Color.White); 
+         Raylib.DrawTexture(Fighter1, 1100, 200, Color.White);
         Raylib.DrawRectangle(750, 800, 300, 100, Color.DarkBlue);
         Raylib.ClearBackground(Color.White);
         //Raylib.DrawTexture(backgroundaik, 0, 0, Color.Black);
-        Raylib.DrawText($"Time:{((timer/100))}",820,100,100,Color.Black);
+        Raylib.DrawText($"Time:{((timer/100))}",700,100,100,Color.Black);
         Raylib.DrawText("Fight", 775,800,100,Color.White);
         
         
@@ -148,7 +155,7 @@ Raylib.BeginDrawing();
     {
         if (turn == 0 && game == 2)
     {  
-        
+     
          if (Raylib.GetMouseX() > 750 && Raylib.GetMouseX() < 1050 && Raylib.GetMouseY() > 750 && Raylib.GetMouseY() < 850)
         {
             if (attackcap == 0)
@@ -176,6 +183,7 @@ Raylib.BeginDrawing();
     
              if (Raylib.IsKeyPressed(KeyboardKey.A))
              {
+                
                 Damage_Op();
                attackcap = 1;
                 attacktimer = true;
@@ -195,7 +203,7 @@ Raylib.BeginDrawing();
             movement1 = 0;
            }
 
-            if (gubbe2 == true)
+            if (gubbe2 == true && Fight == 1)
             {
                  Raylib.DrawText("AIK CHANT(Z)", 720,720,50,Color.White);
                 //string[] move2 = {"AIK CHANT", "Gnagets Bite of 87", "Gynges snipe", "Bagendas bråkavslutare"};
@@ -203,6 +211,13 @@ Raylib.BeginDrawing();
                  //   move2[1] = "Gnagets Bite of 87";
                  //   move2[2] = "Gynges snipe";
                   //  move2[3] = "Bagendas bråkavslutare";
+                  if (Raylib.IsKeyPressed(KeyboardKey.Z))
+             {
+               // fighter1_dm[0] = 200;
+                Damage_Opz();
+               attackcap = 1;
+                attacktimer = true;
+             }
             }
 
        
@@ -237,7 +252,7 @@ Raylib.BeginDrawing();
     }
         if (gubbe1 == true)
         {
-             Raylib.DrawTexture(Fighter1, 75, 200, Color.White);
+             Raylib.DrawTexture(Fighter1, Fightermovement, 200, Color.White);
         }
         if (gubbe2 == true)
         {   
@@ -260,6 +275,7 @@ Raylib.BeginDrawing();
         mvmttimer = 0;
         attacktimer = false;
         turn = 0;
+        
     }
     }
     
