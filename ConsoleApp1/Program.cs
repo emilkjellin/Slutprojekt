@@ -31,15 +31,13 @@ double timer = 0;
 int mvmttimer = 0;
 int turn = 0;
 bool attacktimer = false;
-string[] characters = {"NormalTheo", "AikTheo", "TyskTheo", "EldenringTheo"};
-characters[0] = "NormalTheo";
-characters[1] = "AikTheo";
-characters[2] = "TyskTheo";
-characters[3] = "EldenringTheo";
+
+string[] characters = {""};
+
 bool gubbe1 = false;
 bool gubbe2 = false;
 int movement1 = 0;
-string playername = "";
+
 Random random = new Random();
 while (!Raylib.WindowShouldClose())
 {
@@ -97,8 +95,8 @@ Raylib.BeginDrawing();
         if (Raylib.IsMouseButtonDown(MouseButton.Left))
         {
             game = 2;
-           gubbe1 = true; 
-           playername = "NormieTheo";
+           gubbe1 = true;
+           characters[0] = "NormieTheo";
         }
    
     }
@@ -108,7 +106,7 @@ Raylib.BeginDrawing();
         {
             game = 2;
            gubbe2 = true; 
-           playername = "AIKTHEO";
+           characters[0]="AIKTHEO";
         }
    
     }
@@ -119,6 +117,7 @@ Raylib.BeginDrawing();
    
     if (game == 2)
     {
+        
         //timer.Start();
         if (game == 2)
         {
@@ -135,13 +134,13 @@ Raylib.BeginDrawing();
         Raylib.DrawText("Fight", 775,800,100,Color.White);
         
         
-        //Healthbar me
+        //Healthbar dig
         Raylib.DrawRectangle(105, 97, 520, 95, Color.Gray);
         Raylib.DrawRectangle(110, 103, fighter1_hp, 80, Color.Red);
         Raylib.DrawText($"{fighter1_hp}", 220,100,75,Color.White);
 
 
-        //Healthbar enemy
+        //Healthbar motståndare
          Raylib.DrawRectangle(1205, 97, 520, 95, Color.Gray);
          Raylib.DrawRectangle(1210, 105, fighterhp2, 80, Color.Red);
          Raylib.DrawText($"{fighterhp2}", 1220,100,75,Color.White);
@@ -149,6 +148,7 @@ Raylib.BeginDrawing();
     {
         if (turn == 0 && game == 2)
     {  
+        
          if (Raylib.GetMouseX() > 750 && Raylib.GetMouseX() < 1050 && Raylib.GetMouseY() > 750 && Raylib.GetMouseY() < 850)
         {
             if (attackcap == 0)
@@ -272,12 +272,12 @@ Raylib.BeginDrawing();
         if (fighter2_hp == 0)
         {
             Raylib.ClearBackground(Color.Black);
-            Raylib.DrawText($"{playername} Vann" , 800, 470, 50, Color.White);
+            Raylib.DrawText($"{characters[0]} Vann" , 800, 470, 50, Color.White);
         }
         if (fighter1_hp == 0)
         {
             Raylib.ClearBackground(Color.Black);
-            Raylib.DrawText($"{playername} Lost" , 800, 470, 50, Color.White);
+            Raylib.DrawText($"{characters[0]} Lost" , 800, 470, 50, Color.White);
         }
         if (Raylib.IsKeyPressed(KeyboardKey.Enter))
         {
