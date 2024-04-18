@@ -51,7 +51,7 @@ List<Texture2D> ops = new List<Texture2D>(5);
         Random randint = new Random();
         Texture2D texture = ops[randint.Next(0,2)];
     
-Random random = new Random();
+
 while (!Raylib.WindowShouldClose())
 {
    
@@ -107,7 +107,7 @@ while (!Raylib.WindowShouldClose())
 
     if (game == 2)
     {
-        
+        Random random = new Random();
         
 
 
@@ -230,6 +230,7 @@ while (!Raylib.WindowShouldClose())
         {
             if (game == 2)
             {
+                
                 turn = 1;
                 int moveop = random.Next(1, 3);
                 if (attackcap1 == 0)
