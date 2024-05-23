@@ -24,6 +24,7 @@ int fighter1_hp = 500;
 int fighter2_hp = 500;
 int fighter1_dmg = 100;
 int fighter1_dmgz = 500;
+
 int fighter2_dm = 100;
 int Fightermovement = 75;
 int attackcap = 0;
@@ -42,19 +43,19 @@ int movement1 = 0;
 
 
 List<Texture2D> ops = new List<Texture2D>(5);
-            ops.Add(Fighter1);
-            ops.Add(Fighter2);
-        /*Dictionary<string, Texture2D> ops = new Dictionary<string, Texture2D>();
-        ops.Add("NormieTheo", Fighter1);
-        ops.Add("AikTheo", Fighter2);*/
+ops.Add(Fighter1);
+ops.Add(Fighter2);
+/*Dictionary<string, Texture2D> ops = new Dictionary<string, Texture2D>();
+ops.Add("NormieTheo", Fighter1);
+ops.Add("AikTheo", Fighter2);*/
 
-        Random randint = new Random();
-        Texture2D texture = ops[randint.Next(0,2)];
-    
+Random randint = new Random();
+Texture2D texture = ops[randint.Next(0, 2)];
+
 
 while (!Raylib.WindowShouldClose())
 {
-   
+
 
     Raylib.BeginDrawing();
     if (game == 0)
@@ -108,7 +109,7 @@ while (!Raylib.WindowShouldClose())
     if (game == 2)
     {
         Random random = new Random();
-        
+
 
 
         if (game == 2)
@@ -118,9 +119,9 @@ while (!Raylib.WindowShouldClose())
 
         int Fight = 0;
         int fighterhp2 = fighter2_hp;
-        
-        
-        
+
+
+
         Raylib.DrawTexture(texture, 1200, 200, Color.White);
         Raylib.DrawRectangle(750, 800, 300, 100, Color.DarkBlue);
         Raylib.ClearBackground(Color.White);
@@ -139,14 +140,14 @@ while (!Raylib.WindowShouldClose())
         Raylib.DrawRectangle(1205, 97, 520, 95, Color.Gray);
         Raylib.DrawRectangle(1210, 105, fighterhp2, 80, Color.Red);
         Raylib.DrawText($"{fighterhp2}", 1220, 100, 75, Color.White);
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
         if (timer < 500)
         {
             if (turn == 0 && game == 2)
@@ -189,11 +190,12 @@ while (!Raylib.WindowShouldClose())
                         attackcap = 1;
                         attacktimer = true;
                     }
-                   
-                   
+
+
                     if (movement1 == 1)
                     {
                         playermovement();
+
 
                     }
                     if (movement1 == 0)
@@ -201,7 +203,7 @@ while (!Raylib.WindowShouldClose())
 
                         Fightermovement = 75;
                     }
-                    
+
 
 
 
@@ -230,7 +232,7 @@ while (!Raylib.WindowShouldClose())
         {
             if (game == 2)
             {
-                
+
                 turn = 1;
                 int moveop = random.Next(1, 3);
                 if (attackcap1 == 0)
@@ -267,7 +269,7 @@ while (!Raylib.WindowShouldClose())
         {
             game = 3;
         }
-        if (fighter1_hp <= 0 )
+        if (fighter1_hp <= 0)
         {
             game = 3;
         }
@@ -293,14 +295,20 @@ while (!Raylib.WindowShouldClose())
         if (fighter2_hp <= 0)
         {
             Raylib.ClearBackground(Color.Black);
-            Raylib.DrawText($"{characters[0]} Vann", 800, 470, 50, Color.White);
-            texture = ops[randint.Next(0,2)];
+           
+                for (int i = 0; i < 3; i++)
+                {
+                    Raylib.DrawText($"{characters[0]} Vann", 400 + 400*i, 250 + 250*i, 50, Color.White);
+
+                }
+           
+            texture = ops[randint.Next(0, 2)];
         }
         if (fighter1_hp <= 0)
         {
             Raylib.ClearBackground(Color.Black);
             Raylib.DrawText($"{characters[0]} Lost", 800, 470, 50, Color.White);
-            texture = ops[randint.Next(0,2)];
+            texture = ops[randint.Next(0, 2)];
         }
         if (Raylib.IsKeyPressed(KeyboardKey.Enter))
         {
@@ -310,7 +318,7 @@ while (!Raylib.WindowShouldClose())
             gubbe1 = false;
             gubbe2 = false;
             movement1 = 0;
-            
+
         }
     }
 
@@ -321,30 +329,32 @@ while (!Raylib.WindowShouldClose())
 }
 
 void Damage_Op()
-    {
-        fighter2_hp -= fighter1_dmg;
-        movement1 = 1;
-    }
-    void Damage_Opz()
-    {
-        fighter2_hp -= fighter1_dmgz;
-        movement1 = 1;
-    }
-    void Damage_player()
-    {
-        fighter1_hp -= fighter2_dm;
-    }
-    void playermovement()
-    {
+{
+    fighter2_hp -= fighter1_dmg;
+    movement1 = 1;
+}
+void Damage_Opz()
+{
+    fighter2_hp -= fighter1_dmgz;
 
-        mvmttimer += 1;
-        if (mvmttimer < 10)
-        {
-            Fightermovement += 500;
+    movement1 = 1;
 
-        }
-        if (mvmttimer > 10)
-        {
-            Fightermovement = 75;
-        }
+}
+void Damage_player()
+{
+    fighter1_hp -= fighter2_dm;
+}
+void playermovement()
+{
+
+    mvmttimer += 1;
+    if (mvmttimer < 10)
+    {
+        Fightermovement += 500;
+
     }
+    if (mvmttimer > 10)
+    {
+        Fightermovement = 75;
+    }
+}
